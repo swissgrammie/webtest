@@ -40,3 +40,24 @@ gretty {
     contextPath = '/onld'
 }
 
+task startDB {
+    doFirst {
+        println "starting the DB container"
+    }
+}
+
+
+task stopDB {
+    doFirst {
+        println "stopping the DB container"
+    }
+}
+
+
+project.afterEvaluate {
+    project.tasks.appStart.dependsOn startDB
+    project.tasks.appStop.dependsOn stopDB
+
+}
+
+
