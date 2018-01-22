@@ -18,7 +18,7 @@ task ddcompileCobol(type:Exec) {
 task compileCobol {
     description = 'Uses ecobol to comile cobol'
 
-    def sourceDir = 'src/main/cobol'
+    def sourceDir = 'src/main/cobol/program'
     def targetDir = 'src/main/intermediate_java'
     def ecobolExe = OperatingSystem.current().isMacOsX() ? './ecobolbin/bin/macosx/x86_64/ecobol' : './ecobolbin/bin/win64/x86_64/ecobol';
 
@@ -26,7 +26,7 @@ task compileCobol {
 
         file(sourceDir).eachFile { aFile ->
             if (aFile.name.endsWith("cbl")) {
-                def proc  = "$ecobolExe -v -cc src/main/cobol/$aFile.name -out:dir $targetDir".execute();
+                def proc  = "$ecobolExe -v -cc $sourceDir/$aFile.name -out:dir $targetDir".execute();
                 proc.waitFor();
                 if (proc.exitValue() != 0) {
                     println "stderr: ${proc.err.text}"
