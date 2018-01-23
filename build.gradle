@@ -27,11 +27,24 @@ cargoRunLocal.dependsOn assemble  //this will assemble the war every time we do 
 cargo {
     containerId = 'tomcat7x'
 
+    // http://localhost:8080/onld/onld should bring up the screen..
+    deployable {
+        file = file("$buildDir/libs/webtest-1.0-SNAPSHOT.war")
+        context = 'onld'
+    }
     local {
         installer {
             installUrl = 'http://apache.osuosl.org/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.zip'
             downloadDir = file("$buildDir/download")
             extractDir = file("$buildDir/extract")
+        }
+
+        homeDir = file('$buildDir/extract/apache-tomcat-7.0.82/apache-tomcat-7.0.82')
+        outputFile = file('build/output.log')
+        timeout = 60000
+
+        containerProperties {
+                property 'cargo.tomcat.ajp.port', 8080
         }
     }
 }
