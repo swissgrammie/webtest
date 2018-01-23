@@ -47,6 +47,12 @@ cargo {
                 property 'cargo.tomcat.ajp.port', 8080
         }
     }
+
+    remote {
+    hostname = 'localhost'
+    username = 'admin'
+    password = 'admin'
+  }
 }
 
 sourceCompatibility = 1.8
