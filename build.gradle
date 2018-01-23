@@ -1,3 +1,15 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.3'
+    }
+}
+
+
 group 'cc.heirloom.demo'
 version '1.0-SNAPSHOT'
 
@@ -6,7 +18,23 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'war'
 
+//add deployment tasks https://github.com/bmuschko/gradle-cargo-plugin
+apply plugin: 'com.bmuschko.cargo'
 
+cargoRunLocal.dependsOn assemble  //this will assemble the war every time we do the local deploy
+
+//cargo config, download a local copy of tomcat
+cargo {
+    containerId = 'tomcat7x'
+
+    local {
+        installer {
+            installUrl = 'http://apache.osuosl.org/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.zip'
+            downloadDir = file("$buildDir/download")
+            extractDir = file("$buildDir/extract")
+        }
+    }
+}
 
 sourceCompatibility = 1.8
 
@@ -18,18 +46,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'javax.transaction', name: 'transaction-api', version: '1.1'
-
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.0'
 }
 
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
-    }
-}
 apply plugin: "com.jfrog.artifactory"
 
 apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
