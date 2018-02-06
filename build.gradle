@@ -18,6 +18,11 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'war'
 
+war {
+    exclude "classes"
+    from( "../tpcc/resources", { into 'WEB-INF/classes'})
+}
+
 //add deployment tasks https://github.com/bmuschko/gradle-cargo-plugin
 apply plugin: 'com.bmuschko.cargo'
 
@@ -34,12 +39,12 @@ cargo {
     }
     local {
         installer {
-            installUrl = 'http://apache.osuosl.org/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.zip'
+            installUrl = 'http://apache.osuosl.org/tomcat/tomcat-7/v7.0.84/bin/apache-tomcat-7.0.84.zip'
             downloadDir = file("$buildDir/download")
             extractDir = file("$buildDir/extract")
         }
 
-        homeDir = file('$buildDir/extract/apache-tomcat-7.0.82/apache-tomcat-7.0.82')
+        homeDir = file('$buildDir/extract/apache-tomcat-7.0.84/apache-tomcat-7.0.84')
         outputFile = file('build/output.log')
         timeout = 60000
 
@@ -51,7 +56,7 @@ cargo {
     remote {
     hostname = 'localhost'
     username = 'admin'
-    password = 'admin'
+    password = 'password'
   }
 }
 

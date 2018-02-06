@@ -10,16 +10,12 @@ dependencies {
     providedCompile(group: 'cc.heirloom', name: 'ecobol', version: '1.1', ext: 'zip')
 }
 
-task ddcompileCobol(type:Exec) {
-    commandLine = 'ecobolbin/ecobol.exe'
-    args = ['-v', '-cc', 'src/main/cobol/test.cbl', '-out:dir', 'src/main/intermediate_java']
-}
 
 task compileCobol {
     description = 'Uses ecobol to comile cobol'
 
-    def sourceDir = 'src/main/cobol/program'
-    def targetDir = 'src/main/intermediate_java'
+    def sourceDir = '../tpcc/cobol_source'
+    def targetDir = '../tpcc/intermediate_java_code'
     def ecobolExe = OperatingSystem.current().isMacOsX() ? './ecobolbin/bin/macosx/x86_64/ecobol' : './ecobolbin/bin/win64/x86_64/ecobol';
 
     doLast {
@@ -40,7 +36,7 @@ task compileCobol {
 sourceSets {
     main {
         java {
-            srcDirs('src/main/intermediate_java')
+            srcDirs = ['../tpcc/intermediate_java_code','../tpcc/java_source']
         }
     }
 }
@@ -97,7 +93,7 @@ ecobolbin.doLast {
 
 clean.doLast {
     file('ecobolbin').deleteDir()
-    file ('src/main/intermediate_java').deleteDir()
+    file ('../tpcc/intermediate_java_code').deleteDir()
 }
 
 compileCobol.dependsOn ecobolbin

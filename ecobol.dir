@@ -1,2 +1,2 @@
 $set directive "-out:transaction"
-$set directive "-source:copylib ./src/main/cobol/copydir"
+$set directive "-source:copylib ../tpcc/copylib"

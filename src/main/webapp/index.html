@@ -1,61 +1,26 @@
-onld<html>
+<html>
 <head>
-<title>Your ETP Project Home Page</title>
-<meta http-equiv="refresh" content="11;URL='servlet'" />
-<script>
-function inittranurl() {
-	var doc = document.location.href;
-	if (doc.indexOf("index.html") > 0) {
-	    doc = doc.replace("index.html", "servlet");
-	} else if (doc.charAt(doc.length-1) == '/') {
-		doc = doc + "servlet";
-	} else {
-		doc = doc + "/servlet";
-	}
-	document.write(doc);
-}
-</script>
+<title>Heirloom Computing TPC-C Benchmark</title>
+<meta http-equiv="refresh" content="5;URL='servlet'" />
 </head>
 <body>
 <table border="0" width="100%">
 <tr><td><img src="heirloom.png"></td><td></td></tr>
 </table>
-<h3>Your ETP Project Home Page</h3>
+<h3>Heirloom Computing TPC-C Benchmark</h3>
 <p>
-This is the <strong>index.html</strong> page for your deployed Elastic Transaction 
-Platform project.  Change this page or go directly to the first screen of your ETP 
-transaction with the URL:</p>
-<ul>
-<li><a href="onld">
-<script>inittranurl()</script></a>
-</ul>
+This is an Heirloom Computing, Inc. Elastic COBOL implementation 
+of the TPC-C benchmark running as a CICS application under the
+Elastic Transaction Platform deployed to the
+Heirloom Platform-as-a-Service (HPaaS) in cloud environments.
+Together with the <i>TPC-C Driver</i> application, it can simulate
+an active customer and supplier parts warehouse scalable to arbitrary
+sizes based on the number of ETP instances are handling the thousands
+of user sessions, thus demonstrating the scale-out nature of ETP and
+the cloud-based databases that back it.</p>
+<p>The initial transaction page will appear in a few seconds.</p>
 <p>
-The <strong>index.html</strong> and other static content such as the cascading style
-sheets that control the look and feel of your screens are in the <strong>Java EE</strong>
-folder of your ETP Deployment Project.
-You can change the ETP region name part of the URL (for Java EE deployments) and the 
-<strong>/servlet</strong> portion of the URL in the ETP Deploy Settings file.  
-For servlet container deployments the URL is determined by the name of the war you deployed.
-</p><p>
-<h3 style="color:blue"">Control will transfer to this region's INIT transaction screen in
-<span id="countdown" class="timer"></span>
-<script>
-var seconds = 10;
-function secondPassed() {
-    var minutes = Math.floor(seconds/60);
-    var remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-        remainingSeconds = remainingSeconds;  
-    }
-    document.getElementById('countdown').innerHTML = remainingSeconds;
-    seconds--;
-}
-var countdownTimer = setInterval('secondPassed()', 1000);
-</script>
-seconds.</h3>
-</p>
-<p>
-See <a href="http://support.heirloom.cc">support.heirloom.cc</a>
+See <a href="http://www.heirloomcomputing.com">www.heirloomcomputing.com</a>
 for more information.
 </p>
 </body>

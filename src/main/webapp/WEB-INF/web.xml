@@ -16,7 +16,7 @@
    <servlet>
       <icon/>
       <servlet-name>
-         onld
+         servlet
       </servlet-name>
       <servlet-class>com.heirloomcomputing.etp.transaction.presentation.HTMLServlet</servlet-class>
       <init-param>
@@ -28,8 +28,64 @@
          <param-value>ETP Application</param-value>
       </init-param>
       <init-param>
-         <param-name>program.onldemo</param-name>
-         <param-value>onldemo</param-value>
+         <param-name>program.sqldelv</param-name>
+         <param-value>sqldelv</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.sqlload</param-name>
+         <param-value>sqlload</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.sqlnord</param-name>
+         <param-value>sqlnord</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.sqlords</param-name>
+         <param-value>sqlords</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.sqlpaym</param-name>
+         <param-value>sqlpaym</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.sqlstkl</param-name>
+         <param-value>sqlstkl</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.tpccbmsm</param-name>
+         <param-value>tpccbmsm</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.tpccerrs</param-name>
+         <param-value>tpccerrs</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.tpccplti</param-name>
+         <param-value>tpccplti</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmdelv</param-name>
+         <param-value>vsmdelv</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmload</param-name>
+         <param-value>vsmload</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmnord</param-name>
+         <param-value>vsmnord</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmords</param-name>
+         <param-value>vsmords</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmpaym</param-name>
+         <param-value>vsmpaym</param-value>
+      </init-param>
+      <init-param>
+         <param-name>program.vsmstkl</param-name>
+         <param-value>vsmstkl</param-value>
       </init-param>
       <init-param>
          <param-name>sql.default.autocommit</param-name>
@@ -37,11 +93,15 @@
       </init-param>
       <init-param>
          <param-name>sql.default.driver</param-name>
-         <param-value>org.h2.Driver</param-value>
+         <param-value>org.postgresql.Driver</param-value>
       </init-param>
       <init-param>
          <param-name>sql.default.isolation</param-name>
          <param-value>repeatable</param-value>
+      </init-param>
+      <init-param>
+         <param-name>sql.default.password</param-name>
+         <param-value>abc000</param-value>
       </init-param>
       <init-param>
          <param-name>sql.default.readonly</param-name>
@@ -49,43 +109,43 @@
       </init-param>
       <init-param>
          <param-name>sql.default.url</param-name>
-         <param-value>jdbc:h2:./workdir/test</param-value>
-      </init-param>
-      <init-param>
-         <param-name>sql.default.password</param-name>
-         <param-value></param-value>
+         <param-value>jdbc:postgresql://localhost/tpcc</param-value>
       </init-param>
       <init-param>
          <param-name>sql.default.user</param-name>
-         <param-value>sa</param-value>
+         <param-value>postgres</param-value>
       </init-param>
       <init-param>
          <param-name>sysid</param-name>
-         <param-value>onld</param-value>
+         <param-value>tpcc</param-value>
+      </init-param>
+      <init-param>
+         <param-name>transaction.delv</param-name>
+         <param-value>sqldelv</param-value>
       </init-param>
       <init-param>
          <param-name>transaction.init</param-name>
-         <param-value>onldemo</param-value>
+         <param-value>tpccbmsm</param-value>
       </init-param>
       <init-param>
-         <param-name>transaction.init.uctran</param-name>
-         <param-value>false</param-value>
+         <param-name>transaction.load</param-name>
+         <param-value>sqlload</param-value>
       </init-param>
       <init-param>
-         <param-name>transaction.onld</param-name>
-         <param-value>onldemo</param-value>
+         <param-name>transaction.nord</param-name>
+         <param-value>sqlnord</param-value>
       </init-param>
       <init-param>
-         <param-name>transaction.onld.uctran</param-name>
-         <param-value>false</param-value>
+         <param-name>transaction.ords</param-name>
+         <param-value>sqlords</param-value>
       </init-param>
       <init-param>
-         <param-name>web.servlet.name</param-name>
-         <param-value>onld</param-value>
+         <param-name>transaction.paym</param-name>
+         <param-value>sqlpaym</param-value>
       </init-param>
       <init-param>
-         <param-name>web.servlet_mapping.url_pattern</param-name>
-         <param-value>/onld</param-value>
+         <param-name>transaction.stkl</param-name>
+         <param-value>sqlstkl</param-value>
       </init-param>
    </servlet>
    <listener>
@@ -99,8 +159,8 @@
       <servlet-class>com.heirloomcomputing.etp.transaction.presentation.TERMINALServlet</servlet-class>
    </servlet>
    <servlet-mapping>
-      <servlet-name>onld</servlet-name>
-      <url-pattern>/onld</url-pattern>
+      <servlet-name>servlet</servlet-name>
+      <url-pattern>/servlet</url-pattern>
    </servlet-mapping>
    <servlet-mapping>
       <servlet-name>terminal</servlet-name>
