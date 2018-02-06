@@ -1,0 +1,140 @@
+******************************************************************
+*        Copyright (C) 2010-2018 Heirloom Computing Inc.         *
+*                                                                *
+*                        ALL RIGHTS RESERVED                     *
+******************************************************************
+*                                                                *
+* Property of Heirloom Computing Inc.  This software contains    *
+* confidential and proprietary information of Heirloom Computing *
+* Inc. and is made available solely pursuant to the terms of a   *
+* software license agreement, which governs its use.             *
+*                                                                *
+* No disclosure, reproduction or use of any portion of these     *
+* materials may be made without the express written consent of   *
+* Heirloom Computing Inc.                                        *
+*                                                                *
+******************************************************************
+*23456789|123456789|123456789|123456789|123456789|123456789|123456789|1 3456789|
+BMSSTKL  DFHMSD TYPE=&&SYSPARM,                                        X
+               DATA=FIELD,                                             X
+               EXTATT=NO,                                              X
+               HILIGHT=OFF,                                            X
+               LANG=COBOL,                                             X
+               MODE=INOUT,                                             X
+               OBFMT=NO,                                               X
+               STORAGE=AUTO,                                           X
+               TERM=3270,                                              X
+               CTRL=(FREEKB,FRSET),                                    X
+               TIOAPFX=YES
+BMSSTKL  DFHMDI SIZE=(24,080),                                         X
+               DATA=FIELD,                                             X
+               HILIGHT=OFF,                                            X
+               OBFMT=NO,                                               X
+               TIOAPFX=YES
+STKLTRN  DFHMDF POS=(01,001),                                          X
+               ATTRB=(ASKIP,DRK,FSET),                                 X
+               LENGTH=004,                                             X
+               INITIAL='STKL'
+         DFHMDF POS=(01,034),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=11,                                              X
+               INITIAL='Stock Level'
+         DFHMDF POS=(01,072),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=07,                                              X
+               INITIAL='bmsstkl'
+* 03
+         DFHMDF POS=(03,013),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=10,                                              X
+               INITIAL='Warehouse:'
+STKLWID  DFHMDF POS=(03,024),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=04
+         DFHMDF POS=(03,029),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=00
+* 05
+         DFHMDF POS=(05,014),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=09,                                              X
+               INITIAL='District:'
+STKLDID  DFHMDF POS=(05,024),                                          X
+               ATTRB=(NORM,IC),                                        X
+               LENGTH=02
+         DFHMDF POS=(05,027),ATTRB=(ASKIP,NORM),LENGTH=00
+* 07
+         DFHMDF POS=(07,001),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=022,                                             X
+               INITIAL='Stock Level Threshold:'
+STKLTRH  DFHMDF POS=(07,024),                                          X
+               ATTRB=(NORM),                                           X
+               LENGTH=02
+         DFHMDF POS=(07,027),ATTRB=(ASKIP,NORM),LENGTH=00
+* 09
+         DFHMDF POS=(09,013),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=010,                                             X
+               INITIAL='Low Stock:'
+STKLSTK  DFHMDF POS=(09,024),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=03
+         DFHMDF POS=(05,028),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=00
+* 23
+STKLMSG  DFHMDF POS=(23,001),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=79
+* 24
+         DFHMDF POS=(24,001),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F1'
+         DFHMDF POS=(24,004),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=010,                                             X
+               INITIAL='New Order '
+         DFHMDF POS=(24,015),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F2'
+         DFHMDF POS=(24,018),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=008,                                             X
+               INITIAL='Payment '
+         DFHMDF POS=(24,027),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F3'
+         DFHMDF POS=(24,030),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=013,                                             X
+               INITIAL='Order Status '
+         DFHMDF POS=(24,044),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F4'
+         DFHMDF POS=(24,047),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=009,                                             X
+               INITIAL='Delivery '
+         DFHMDF POS=(24,057),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F5'
+         DFHMDF POS=(24,060),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=012,                                             X
+               INITIAL='Stock Level '
+         DFHMDF POS=(24,073),                                          X
+               ATTRB=(ASKIP,NORM),                                     X
+               LENGTH=002,                                             X
+               INITIAL='F6'
+         DFHMDF POS=(24,076),                                          X
+               ATTRB=(ASKIP,BRT),                                      X
+               LENGTH=004,                                             X
+               INITIAL='Menu'
+         DFHMSD TYPE=FINAL
+         END

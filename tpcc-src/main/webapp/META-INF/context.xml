@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context><!--  Uncomment either of these sections to turn on
+        ETP RAC security.  When these Realm directives are
+        placed here you do not need to place
+        these constructs in Tomcat's server.xml file.
+        Also set the JAAS security configuration upon Tomcat startup (catalina.sh):
+        -Djava.security.auth.login.config=$CATALINA_BASE/webapps/etp1/META-INF/jaas.config
+        See https://heirloomcomputing.zendesk.com/entries/82410745-Operating-EBP-in-a-Secure-Environment
+        for more information. -->
+   <Realm className="org.apache.catalina.realm.CombinedRealm"><!--  JAASRealm:  When using Tomcat JAASRealm to authenticate specific
+          USER and PASSWORD keywords present on the JOB card -->
+      <Realm appName="ETP" className="org.apache.catalina.realm.JAASRealm" roleClassNames="com.heirloomcomputing.ecc.RACRole" userClassNames="com.heirloomcomputing.ecc.RACUser"/><!-- end of JNDIRealm uncomment section --><!--  JNDIRealm:  When using Tomcat JNDIRealm to authenticate users and
+          passwords against an OpenLDAP server prior to invoking EBP Web services
+          (modify for your dc)  - - >
+    <Realm className="org.apache.catalina.realm.JNDIRealm"
+             appName="EBP"
+       connectionURL="ldap://localhost:389"
+         userPattern="uid={0},ou=people,dc=my-domain,dc=com"
+            roleBase="ou=groups,dc=my-domain,dc=com"
+            roleName="cn"
+          roleSearch="(uniqueMember={0})"
+     />
+     < ! - - end of JNDIRealm uncomment section -->
+   </Realm>
+</Context>

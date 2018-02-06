@@ -1,0 +1,198 @@
+******************************************************************
+*        Copyright (C) 2010-2018 Heirloom Computing Inc.         *
+*                                                                *
+*                        ALL RIGHTS RESERVED                     *
+******************************************************************
+*                                                                *
+* Property of Heirloom Computing Inc.  This software contains    *
+* confidential and proprietary information of Heirloom Computing *
+* Inc. and is made available solely pursuant to the terms of a   *
+* software license agreement, which governs its use.             *
+*                                                                *
+* No disclosure, reproduction or use of any portion of these     *
+* materials may be made without the express written consent of   *
+* Heirloom Computing Inc.                                        *
+*                                                                *
+******************************************************************
+*23456789|123456789|123456789|123456789|123456789|123456789|123456789|1 3456789|
+BMSMENU DFHMSD CTRL=(FREEKB,FRSET),                                    -
+               DATA=FIELD,                                             -
+               EXTATT=NO,                                              -
+               HILIGHT=OFF,                                            -
+               LANG=COBOL,                                             -
+               MODE=INOUT,                                             -
+               OBFMT=NO,                                               -
+               STORAGE=AUTO,                                           -
+               TERM=3270,                                              -
+               TIOAPFX=YES,                                            -
+               TYPE=&&SYSPARM 
+BMSMENU DFHMDI DATA=FIELD,                                             -
+               HILIGHT=OFF,                                            -
+               OBFMT=NO,                                               -
+               SIZE=(24,80),                                           -
+               TIOAPFX=YES 
+MENUTRN DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=4,                                               -
+               POS=(1,1),                                              -
+               INITIAL='LUCY' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=27,                                              -
+               POS=(1,26),                                             -
+               INITIAL='HCI TPC-C Benchmark Harness' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=7,                                               -
+               POS=(1,72),                                             -
+               INITIAL='bmsmenu' 
+* 03 Warehouse Number
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=23,                                              -
+               POS=(3,1),                                              -
+               INITIAL='Warehouse Number(1-10):' 
+MENUWID DFHMDF ATTRB=(IC,NORM),                                        -
+               LENGTH=4,                                               -
+               POS=(3,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=45,                                              -
+               POS=(3,30),                                             -
+               INITIAL='(F1=New Order, F2=Payment,... F5=Stock Level)'
+* 05 COBOL File I/O (VSAM) or SQL database (V or D):
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=21,                                              -
+               POS=(5,2),                                              -
+               INITIAL='DB or VSAM (D or V): ' 
+MENUDBM DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=1,                                               -
+               POS=(5,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=12,                                              -
+               POS=(5,27),                                             -
+               INITIAL='(Default: D)' 
+* 08
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=78,                                              -
+               POS=(8,1),                                              -
+               INITIAL='_______________________________________________-
+               _______________________________' 
+* 10
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=19,                                              -
+               POS=(10,5),                                             -
+               INITIAL='Load Test Database:' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=44,                                              -
+               POS=(10,27),                                            -
+               INITIAL='(Press Function Key 7 to begin the load proc' 
+* 12 Warehouse Count (1-10)
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=22,                                              -
+               POS=(12,2),                                             -
+               INITIAL='Warehouse Count(1-10):' 
+MENUWCT DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=2,                                               -
+               POS=(12,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=0,                                               -
+               POS=(12,28) 
+* 14 Database Size:  (S = Small, L = Large)
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=14,                                              -
+               POS=(14,10),                                            -
+               INITIAL='Database Size:' 
+MENUSIZ DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=1,                                               -
+               POS=(14,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=22,                                              -
+               POS=(14,27),                                            -
+               INITIAL='(S = Small, L = Large)' 
+* 16 Erase/Remove:
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=13,                                              -
+               POS=(16,11),                                            -
+               INITIAL='Erase Tables:' 
+MENUREM DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=1,                                               -
+               POS=(16,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=18,                                              -
+               POS=(16,27),                                            -
+               INITIAL='(Y = Yes, N = No)' 
+* 18 Create/Load
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=12,                                              -
+               POS=(18,12),                                            -
+               INITIAL='Load Tables:' 
+MENULOD DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=1,                                               -
+               POS=(18,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=18,                                              -
+               POS=(18,27),                                            -
+               INITIAL='(Y = Yes, N = No)' 
+* 20 Debug
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=6,                                               -
+               POS=(20,18),                                            -
+               INITIAL='Debug:' 
+MENUDBG DFHMDF ATTRB=(NORM),                                           -
+               LENGTH=1,                                               -
+               POS=(20,25) 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=18,                                              -
+               POS=(20,27),                                            -
+               INITIAL='(Y = Yes, N = No)' 
+* 23
+MENUMSG DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=79,                                              -
+               POS=(23,1) 
+* 24
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,1),                                             -
+               INITIAL='F1' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=10,                                              -
+               POS=(24,4),                                             -
+               INITIAL='New Order ' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,15),                                            -
+               INITIAL='F2' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=8,                                               -
+               POS=(24,18),                                            -
+               INITIAL='Payment ' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,27),                                            -
+               INITIAL='F3' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=13,                                              -
+               POS=(24,30),                                            -
+               INITIAL='Order Status ' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,44),                                            -
+               INITIAL='F4' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=9,                                               -
+               POS=(24,47),                                            -
+               INITIAL='Delivery ' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,57),                                            -
+               INITIAL='F5' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=12,                                              -
+               POS=(24,60),                                            -
+               INITIAL='Stock Level ' 
+        DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               LENGTH=2,                                               -
+               POS=(24,73),                                            -
+               INITIAL='F6' 
+        DFHMDF ATTRB=(ASKIP,BRT),                                      -
+               LENGTH=4,                                               -
+               POS=(24,76),                                            -
+               INITIAL='Menu' 
+        DFHMSD TYPE=FINAL
+        END
